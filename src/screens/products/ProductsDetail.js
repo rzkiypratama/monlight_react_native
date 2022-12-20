@@ -89,6 +89,7 @@ function ProductDetail(props) {
 
     // useEffect(()=>{console.log(product)})
     return (
+        <ScrollView>
         <View style={styles.container}>
             <View style={styles.navbar}>
                 <IconComunity name="chevron-left" size={22} style={styles.icon} onPress={() => { navigation.goBack(); }} />
@@ -142,13 +143,13 @@ function ProductDetail(props) {
                             <View
                                 style={{
                                     backgroundColor: '#6A4029',
-                                    height: 70,
+                                    height: 50,
                                     width: width / 1.2,
-                                    borderRadius: 20,
+                                    borderRadius: 10,
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                 }}>
-                                <Text style={{ color: 'white', fontFamily: 'Poppins-Bold', fontSize: 17, fontWeight: 'bold' }}>Add to cart</Text>
+                                <Text style={{ color: 'white', fontFamily: 'Poppins-Bold', fontSize: 15, fontWeight: 'bold' }}>Add to cart</Text>
                             </View>
                         </TouchableOpacity>
                     </View>
@@ -161,7 +162,7 @@ function ProductDetail(props) {
                 >
                     <View style={styles.centeredView}>
                     <View style={styles.modalView}>
-                        <Text style={styles.modalText}>Are you want to continue transaction?</Text>
+                        <Text style={styles.modalText}>Continue this transaction?</Text>
                         <View style={{display: 'flex', flexDirection: 'row'}}>
 
                         <Pressable
@@ -176,7 +177,7 @@ function ProductDetail(props) {
                                     50
                                 );
                             }}
-                            style={[styles.buttonModal, styles.buttonClose]}
+                            style={[styles.buttonModal, styles.buttonContinue]}
                         >
                             <Text style={styles.textStyle}>Continue</Text>
                                     </Pressable>
@@ -184,7 +185,7 @@ function ProductDetail(props) {
                             style={[styles.buttonModal, styles.buttonClose]}
                             onPress={() => setModalVisible(!modalVisible)}
                         >
-                            <Text style={styles.textStyle}>Cancel</Text>
+                            <Text style={[styles.textStyle, styles.buttonClose]}>Cancel</Text>
                         </Pressable>
                         </View>
                     </View>
@@ -193,6 +194,7 @@ function ProductDetail(props) {
                 </View>
             </View>
         </View>
+        </ScrollView>
     );
 }
 

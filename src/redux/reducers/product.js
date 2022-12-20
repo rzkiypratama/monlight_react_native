@@ -14,7 +14,7 @@ const initialState = {
 };
 
 const productReducer = (prevState = initialState, { type, payload }) => {
-    const { getProduct, getDetail, getAll, getPromo, createProduct, pending, rejected, fulfilled } = ACTION_STRING;
+    const { getProduct, getDetail, getAll, getPromo, createProduct, createPromo, pending, rejected, fulfilled } = ACTION_STRING;
     switch (type) {
         case getProduct + pending:
             return {
@@ -135,6 +135,26 @@ const productReducer = (prevState = initialState, { type, payload }) => {
       };
 
     case createProduct + fulfilled:
+      return {
+        ...prevState,
+        isLoading: false,
+      };
+      case createPromo + pending:
+                return {
+        ...prevState,
+        isLoading: true,
+        isError: false,
+      };
+
+    case createPromo + rejected:
+      return {
+        ...prevState,
+        isLoading: false,
+        isError: true,
+        error: payload.error.response.data.msg,
+      };
+
+    case createPromo + fulfilled:
       return {
         ...prevState,
         isLoading: false,

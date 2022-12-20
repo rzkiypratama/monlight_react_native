@@ -64,9 +64,8 @@ const styles = StyleSheet.create({
     containerCard: {
         backgroundColor: '#F9F9F9',
         flexWrap: 'wrap',
-        // numColumns: 6,
         flexDirection: 'row',
-        // justifyContent: 'center',
+        justifyContent: 'center',
         paddingHorizontal: 35,
         // paddingRight: 4,
         paddingTop: 25,

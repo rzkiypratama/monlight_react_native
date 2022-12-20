@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import ACTION_STRING from './actionString';
-import { getProduct, getAllProduct, getProductDetail, getPromo, createProduct } from '../../utils/product';
+import { getProduct, getAllProduct, getProductDetail, getPromo, createProduct, createPromo } from '../../utils/product';
 
 const getProductPending = () => ({
   type: ACTION_STRING.getProduct.concat(ACTION_STRING.pending),
@@ -69,6 +69,20 @@ const createProductRejected = error => ({
 
 const createProductFulfilled = data => ({
   type: ACTION_STRING.createProduct.concat(ACTION_STRING.fulfilled),
+  payload: {data},
+});
+
+const createPromoPending = () => ({
+  type: ACTION_STRING.createPromo.concat(ACTION_STRING.pending),
+});
+
+const createPromoRejected = error => ({
+  type: ACTION_STRING.createPromo.concat(ACTION_STRING.rejected),
+  payload: {error},
+});
+
+const createPromoFulfilled = data => ({
+  type: ACTION_STRING.createPromo.concat(ACTION_STRING.fulfilled),
   payload: {data},
 });
 
@@ -151,8 +165,22 @@ const createProductThunk =
     }
   };
 
+  const createPromoThunk =
+  (body, token, cbSuccess, cbDenied) => async dispacth => {
+    try {
+      dispacth(createPromoPending());
+      const result = await createPromo(body, token);
+      dispacth(createPromoFulfilled(result.data));
+      typeof cbSuccess() === 'function' && cbSuccess(result.data.data.id);
+    } catch (error) {
+      console.log(error);
+      dispacth(createPromoRejected(error));
+      typeof cbDenied === 'function' && cbDenied();
+    }
+  };
+
 const productAction = {
-  getProductThunk, getDetailThunk, getAllThunk, getPromoThunk,  createProductThunk,
+  getProductThunk, getDetailThunk, getAllThunk, getPromoThunk,  createProductThunk, createPromoThunk,
 };
 
 export default productAction;

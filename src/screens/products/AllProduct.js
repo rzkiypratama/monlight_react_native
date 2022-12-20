@@ -43,7 +43,7 @@ function Favorite() {
     // console.log(product)
 
     const nextItems = () => {
-        if (query.page == pagination.totalPage) {return;}
+        if (query.page === pagination.totalPage) {return;}
         return setQuery({ ...query, page: query.page + 1 });
     };
 
@@ -195,6 +195,7 @@ function Favorite() {
                 contentContainerStyle={styles.containerCard}
                 numColumns={2}
                 ListFooterComponent={renderFooter}
+                horizontal={false}
               />
             )}
             <Modal
@@ -310,6 +311,7 @@ function Favorite() {
                     </View>
                 </View>
             </Modal>
+
         </View>
     );
 }

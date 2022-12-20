@@ -1,4 +1,6 @@
-import React, {useState,useCallback} from 'react'
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
+import React, {useState,useCallback} from 'react';
 
 import {
     View,
@@ -9,8 +11,8 @@ import {
     ToastAndroid,
     ActivityIndicator,
     Pressable,
-    Linking
-  } from 'react-native'; 
+    Linking,
+  } from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 import styles from '../../styles/Payment';
@@ -26,39 +28,39 @@ import PushNotification from 'react-native-push-notification';
 
 function Payment() {
 
-    const [Payment, setPayment] = useState()
+    const [Payment, setPayment] = useState();
     // const [isLoading, setLoading] = useState(false)
 
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const cartState = useSelector(state => state.transaction.dataPayment);
-    const isLoading = useSelector(state => state.transaction.isLoading)
+    const isLoading = useSelector(state => state.transaction.isLoading);
     const token = useSelector(state => state.auth.userData.token);
 
-console.log(Payment)
+console.log(Payment);
 
     const size = () => {
-        let size = "Reguler"
-        if (cartState.size = "2") size = "Large";
-        if (cartState.size = "3") size = "XL";
-        return size
-    }
+        let size = 'Reguler';
+        if (cartState.size = '2') {size = 'Large';}
+        if (cartState.size = '3') {size = 'XL';}
+        return size;
+    };
 
         const handlePress = () => {
             // if (isLoading) return
-            if (!Payment) return ToastAndroid.showWithGravityAndOffset(
-                    `Select Payment Method !`,
+            if (!Payment) {return ToastAndroid.showWithGravityAndOffset(
+                    'Select Payment Method !',
                     ToastAndroid.SHORT,
                     ToastAndroid.TOP,
                     25,
                     50
-                );
+                );}
                 PushNotification.localNotification({
                     channelId: 'local-notification',
                     title: 'Transaction Notification',
                     message: 'Transaction created succesfully, Please complete your payment immediately!',
                     autoCancel: true,
-                  })
+                  });
             // setLoading(true)
             // console.log(sendBody)
 
@@ -69,24 +71,24 @@ console.log(Payment)
                 promo_id: '1',
                 subtotal: cartState.subTotal,
                 delivery_id: cartState.delivMethod,
-                payment_id: Payment
-            }
-            dispatch(transactionActions.createTransactionThunk(sendBody, token))
-            navigation.navigate('History')
-        }
+                payment_id: Payment,
+            };
+            dispatch(transactionActions.createTransactionThunk(sendBody, token));
+            navigation.navigate('History');
+        };
 
     const costing = (price) => {
         return (
           parseFloat(price)
             .toFixed()
-            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+            .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
         );
       };
 
   return (
     <ScrollView style={styles.container}>
         <View style={styles.navbar}>
-            <IconComunity name={"chevron-left"} size={20} style={styles.icons} onPress={()=>{navigation.goBack()}}/>
+            <IconComunity name={'chevron-left'} size={20} style={styles.icons} onPress={()=>{navigation.goBack();}}/>
             <Text style={styles.titleNavbar}>Payment</Text>
         </View>
         <View style={{paddingTop: 30}}>
@@ -110,41 +112,41 @@ console.log(Payment)
             <View style={styles.CardMethods}>
                 <View>
                     <View style={styles.radio}>
-                        <Pressable style={Payment === "1" ? styles.checkedOuter : styles.unchekedOuter} onPress={()=>{setPayment("1")}}>
-                            <View style={Payment === "1" ? styles.checkedInner : undefined}></View>
+                        <Pressable style={Payment === '1' ? styles.checkedOuter : styles.unchekedOuter} onPress={()=>{setPayment('1');}}>
+                            <View style={Payment === '1' ? styles.checkedInner : undefined} />
                         </Pressable>
                     </View>
                     <View style={styles.radio}>
-                        <Pressable style={Payment === "2" ? styles.checkedOuter : styles.unchekedOuter} onPress={()=>{setPayment("2")}}>
-                            <View style={Payment === "2" ? styles.checkedInner : undefined}></View>
+                        <Pressable style={Payment === '2' ? styles.checkedOuter : styles.unchekedOuter} onPress={()=>{setPayment('2');}}>
+                            <View style={Payment === '2' ? styles.checkedInner : undefined} />
                         </Pressable>
                     </View>
                     <View style={styles.radio}>
-                        <Pressable style={Payment === "3" ? styles.checkedOuter : styles.unchekedOuter} onPress={()=>{setPayment("3")}}>
-                            <View style={Payment === "3" ? styles.checkedInner : undefined}></View>
+                        <Pressable style={Payment === '3' ? styles.checkedOuter : styles.unchekedOuter} onPress={()=>{setPayment('3');}}>
+                            <View style={Payment === '3' ? styles.checkedInner : undefined} />
                         </Pressable>
                     </View>
                 </View>
                 <View>
                     <View style={styles.methodList}>
                         <View style={styles.methodCard}>
-                            <IconComunity name={"card-bulleted-outline"} style={styles.cardIcon} size={20}/>
+                            <IconComunity name={'card-bulleted-outline'} style={styles.cardIcon} size={20}/>
                         </View>
-                        <Text style={styles.textMethod} onPress={()=>{setPayment("1")}}>Card</Text>
+                        <Text style={styles.textMethod} onPress={()=>{setPayment('1');}}>Card</Text>
                     </View>
-                    <Divider width={1} style={{width:"100%",marginTop:5,marginBottom: 3.5 }}/>
+                    <Divider width={1} style={{width:'100%',marginTop:5,marginBottom: 3.5 }}/>
                     <View style={styles.methodList}>
                         <View style={styles.methodBank}>
-                            <IconComunity name={"bank"} style={styles.cardIcon} size={20}/>
+                            <IconComunity name={'bank'} style={styles.cardIcon} size={20}/>
                         </View>
-                        <Text style={styles.textMethod} onPress={()=>{setPayment("2")}}>Bank account</Text>
+                        <Text style={styles.textMethod} onPress={()=>{setPayment('2');}}>Bank account</Text>
                     </View>
-                    <Divider width={1} style={{width:"100%",marginTop:5,marginBottom: 3.5 }}/>
+                    <Divider width={1} style={{width:'100%',marginTop:5,marginBottom: 3.5 }}/>
                     <View style={styles.methodList}>
                         <View style={styles.methodCod}>
-                            <IconComunity name={"truck-fast"} style={{color: 'black'}} size={20}/>
+                            <IconComunity name={'truck-fast'} style={{color: 'black'}} size={20}/>
                         </View>
-                        <Text style={styles.textMethod} onPress={()=>{setPayment("3")}}>Cash on delivery</Text>
+                        <Text style={styles.textMethod} onPress={()=>{setPayment('3');}}>Cash on delivery</Text>
                     </View>
                 </View>
             </View>
@@ -156,27 +158,27 @@ console.log(Payment)
                 <TouchableOpacity
                     activeOpacity={0.8}
                     onPress={()=>{
-                        handlePress()
+                        handlePress();
                     }}>
                     <View
                         style={{
                             marginBottom: 20,
-                            backgroundColor: "#6A4029",
-                            height: 70,
-                            borderRadius: 20,
-                            paddingLeft: 30,
+                            backgroundColor: '#6A4029',
+                            height: 50,
+                            borderRadius: 10,
+                            justifyContent: 'center',
                             alignItems: 'center',
                             display: 'flex',
                             flexDirection: 'row',
-                            alignContent: 'center'
+                            alignContent: 'center',
                         }}>
-                        {isLoading?<ActivityIndicator size='large' color='white' /> : <Text style={{color: "white", fontFamily: 'Poppins-Bold', fontWeight: 'bold', fontSize: 20, paddingLeft: 80}}>Proceed payment</Text>}
+                        {isLoading ? <ActivityIndicator size="large" color="black" /> : <Text style={{color: 'white', fontFamily: 'Poppins-Bold', fontWeight: 'bold', fontSize: 15}}>Proceed payment</Text>}
                     </View>
                 </TouchableOpacity>
             </View>
         </View>
     </ScrollView>
-  )
+  );
 }
 
-export default Payment
+export default Payment;

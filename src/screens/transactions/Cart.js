@@ -1,4 +1,6 @@
-import React, {useState} from 'react'
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
+import React, {useState} from 'react';
 
 import {
     View,
@@ -7,14 +9,14 @@ import {
     Text,
     TouchableOpacity,
     useWindowDimensions,
-    Pressable
-  } from 'react-native'; 
+    Pressable,
+  } from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 import styles from '../../styles/Cart';
 import IconComunity from 'react-native-vector-icons/MaterialCommunityIcons';
 // import Sample from "../image/Hazel.png"
-import Icons from 'react-native-vector-icons/FontAwesome5'
+import Icons from 'react-native-vector-icons/FontAwesome5';
 import { Divider } from '@rneui/themed';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -23,51 +25,51 @@ import transactionActions from '../../redux/actions/transaction';
 
 function Cart() {
 
-  const [quantity, setQuantity] = useState(1)
+  const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
   const cartState = useSelector(state => state.transaction.cart);
   const navigation = useNavigation();
     const { width } = useWindowDimensions();
-    
-    console.log(cartState)
+
+    console.log(cartState);
 
   const costing = (price) => {
     return (
       parseFloat(price)
         .toFixed()
-        .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+        .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
     );
   };
 
   const getItemTotal = () => {
-    let price = cartState.price * quantity
-    return costing(price)
-  }
+    let price = cartState.price * quantity;
+    return costing(price);
+  };
 
   const getTotal = () => {
-    let price = cartState.price * quantity
-    let cost = 0
-    if (cartState.size === "2") cost = 6000
-    if (cartState.size === "3") cost = 12000
-    const total = price + 10000 + cost
-    return costing(total)
-  }
+    let price = cartState.price * quantity;
+    let cost = 0;
+    if (cartState.size === '2') {cost = 6000;}
+    if (cartState.size === '3') {cost = 12000;}
+    const total = price + 10000 + cost;
+    return costing(total);
+  };
 
   const getSizeCost = () => {
-    let cost = 0
-    if (cartState.size === "2") cost = 6000
-    if (cartState.size === "3") cost = 12000
-    return costing(cost)
-  }
+    let cost = 0;
+    if (cartState.size === '2') {cost = 6000;}
+    if (cartState.size === '3') {cost = 12000;}
+    return costing(cost);
+  };
 
   const handleCheckout = () => {
-    let dataCart = cartState
-    let cost = 0
-    if (dataCart.size === "2") cost = 6000
-    if (dataCart.size === "3") cost = 12000
-    let price = cartState.price * quantity
-    const total = price + 10000 + cost
+    let dataCart = cartState;
+    let cost = 0;
+    if (dataCart.size === '2') {cost = 6000;}
+    if (dataCart.size === '3') {cost = 12000;}
+    let price = cartState.price * quantity;
+    const total = price + 10000 + cost;
     const data = {
       id: dataCart.id,
       image: dataCart.image,
@@ -75,16 +77,16 @@ function Cart() {
       price: dataCart.price,
       size: dataCart.size,
       qty: quantity,
-      subTotal: total
-    }
-    dispatch(transactionActions.dataCheckout(data))
-    navigation.navigate("Checkout")
-  }
+      subTotal: total,
+    };
+    dispatch(transactionActions.dataCheckout(data));
+    navigation.navigate('Checkout');
+  };
 
   return (
     <ScrollView style={styles.container}>
       <View style={styles.navbar}>
-          <IconComunity name={"chevron-left"} size={20} style={styles.icons} onPress={()=>{navigation.goBack()}}/>
+          <IconComunity name={'chevron-left'} size={20} style={styles.icons} onPress={()=>{navigation.goBack();}}/>
           <Text style={styles.titleNavbar}>My Cart</Text>
       </View>
       {cartState.length !== 0 &&
@@ -92,25 +94,25 @@ function Cart() {
           <View style={{paddingTop: 40}}>
             <View style={{minHeight: 250}}>
               <View style={styles.card}>
-                <View style={{marginRight: 20,backgroundColor: 'white', width: width/3, padding: 10, borderRadius: 30}}>
+                <View style={{marginRight: 20,backgroundColor: 'white', width: width / 3, padding: 10, borderRadius: 30}}>
                   <Image source={{uri: cartState.image}} style={styles.cardImage}/>
                   <Text style={styles.cardPrice}>IDR {costing(cartState.price)}</Text>
                 </View>
                 <View>
                   <Text style={styles.cardTitle}>{cartState.productName}</Text>
                   <View style={styles.quantity}>
-                    <Pressable style={styles.quantityBtn} onPress={()=>{quantity !== 1 && setQuantity(quantity-1)}}>
-                      <IconComunity name={"window-minimize"} size={15}/>
+                    <Pressable style={styles.quantityBtn} onPress={()=>{quantity !== 1 && setQuantity(quantity - 1);}}>
+                      <IconComunity name={'window-minimize'} size={15}/>
                     </Pressable>
                     <Text style={styles.qtyText}>{quantity}</Text>
-                    <Pressable style={styles.quantityBtn} onPress={()=>{setQuantity(quantity+1)}}>
-                      <Icons name={"plus"} size={10}/>
+                    <Pressable style={styles.quantityBtn} onPress={()=>{setQuantity(quantity + 1);}}>
+                      <Icons name={'plus'} size={10}/>
                     </Pressable>
                   </View>
                 </View>
               </View>
             </View>
-            <Divider width={1} style={{width:"100%",marginTop:15 }}/>
+            <Divider width={1} style={{width:'100%',marginTop:15 }}/>
             <View style={{paddingTop: 30}}>
               <View style={styles.containerTotal}>
                 <Text style={styles.textTotal}>Item Total</Text>
@@ -136,17 +138,16 @@ function Cart() {
                     <View
                         style={{
                         marginVertical: 15,
-                        backgroundColor: "#FFBA33",
-                        height: 70,
-                        borderRadius: 20,
-                        paddingLeft: 30,
+                        backgroundColor: '#FFBA33',
+                        height: 50,
+                        borderRadius: 10,
                         alignItems: 'center',
+                        justifyContent: 'center',
                         display: 'flex',
                         flexDirection: 'row',
-                        alignContent: 'center'
+                        alignContent: 'center',
                         }}>
-                        <IconComunity name={"chevron-right"} size={25} style={{color: 'black'}} />
-                        <Text style={{paddingLeft: 80,color: "black", fontFamily: 'Poppins-Bold', fontWeight: 'bold', fontSize: 20,}}>CHECKOUT</Text>
+                        <Text style={{color: 'black', fontFamily: 'Poppins-Bold', fontWeight: 'bold', fontSize: 15}}>Checkout</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -154,7 +155,7 @@ function Cart() {
         </>
       }
     </ScrollView>
-  )
+  );
 }
 
-export default Cart
+export default Cart;

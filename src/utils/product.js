@@ -38,3 +38,8 @@ export const createProduct = (body, token) => {
   const URL = `${BaseUrl}api/products`;
   return axios.post(URL, body, config(token));
 };
+
+export const createPromo = (body, token) => {
+  const URL = `${BaseUrl}api/promos`;
+  return axios.post(URL, body, config(token));
+};

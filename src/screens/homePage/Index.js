@@ -97,7 +97,7 @@ const Home = () => {
                     </ScrollView>}
 
 
-                    <View>
+                    <ScrollView style={{paddingRight: 10}}>
 
                     {role === 'Admin' && !modalVisible &&
                         <Pressable onPress={() => setModalVisible(true)}>
@@ -132,7 +132,7 @@ const Home = () => {
                                     <Pressable
                                         style={[styles.button, styles.buttonClose]}
                                     >
-                                        <Text style={styles.textStyle}>New Promo</Text>
+                                        <Text style={styles.textStyle} onPress={()=>{navigation.navigate('NewPromo');}}>New Promo</Text>
                                     </Pressable>
                                 </View>
                             </View>
@@ -140,7 +140,7 @@ const Home = () => {
                     </View>
                 }
                 {/* </Modal> */}
-                    </View>
+                    </ScrollView>
                     </ScrollView>
             </Navbar>
         </View>

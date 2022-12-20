@@ -1,9 +1,10 @@
+/* eslint-disable prettier/prettier */
 import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#362115',
-        flex: 1
+        flex: 1,
     },
     navbar: {
         display: 'flex',
@@ -11,22 +12,22 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingLeft: 30,
         paddingRight: 30,
-        paddingTop: 40
+        paddingTop: 40,
     },
     icon: {
-        color: 'white'
+        color: 'white',
     },
     main:{
         flex: 1,
         backgroundColor: 'white',
         position: 'relative',
         marginTop: 100,
-        borderTopRightRadius: 75
+        borderTopRightRadius: 75,
     },
     product: {
         width: 170,
         height: 170,
-        borderRadius: 150
+        borderRadius: 150,
     },
     top: {
         paddingTop: 20,
@@ -37,14 +38,14 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems:'flex-end',
         top: -100,
-        right: 0
+        right: 0,
     },
     Title:{
         fontFamily: 'Poppins-Bold',
         fontWeight: 'bold',
         fontSize: 28,
         color: 'black',
-        paddingRight: 10
+        paddingRight: 10,
     },
     bottom:{
         paddingTop: 150,
@@ -55,14 +56,14 @@ const styles = StyleSheet.create({
         width: 180,
         fontFamily: 'Poppins-Regular',
         color: '#6A4029',
-        fontSize: 14
+        fontSize: 14,
     },
     description:{
         fontFamily: 'Poppins-Bold',
         fontWeight: 'bold',
         fontSize: 15,
         paddingTop: 15,
-        color: '#6A4029'
+        color: '#6A4029',
     },
     sizeText: {
         color: 'black',
@@ -70,23 +71,23 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 20,
         textAlign: 'center',
-        paddingTop: 20
+        paddingTop: 20,
     },
     selected:{
-        backgroundColor: "#6A4029",
+        backgroundColor: '#6A4029',
         marginHorizontal: 20,
         width: 50,
         height: 50,
         borderRadius: 100,
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 20
+        marginVertical: 20,
     },
     selectedText: {
         fontFamily: 'Poppins-Bold',
         fontWeight: 'bold',
         fontSize: 20,
-        color: 'white'
+        color: 'white',
     },
     button:{
         backgroundColor: '#FFBA33',
@@ -96,13 +97,13 @@ const styles = StyleSheet.create({
         borderRadius: 100,
         justifyContent: 'center',
         alignItems: 'center',
-        marginVertical: 20
+        marginVertical: 20,
     },
     buttonText:{
         fontWeight: 'bold',
         fontFamily: 'Poppins-Bold',
         fontSize: 20,
-        color: 'black'
+        color: 'black',
     },
     price:{
         backgroundColor: '#FFBA33',
@@ -114,21 +115,21 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 35,
         borderTopRightRadius: 35,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     priceText:{
         fontFamily: 'Poppins-Bold',
         fontWeight: 'bold',
         fontSize: 25,
         color: 'black',
-        paddingTop: 10
+        paddingTop: 10,
     },
     priceTextDisount:{
         fontWeight: 'bold',
         fontFamily: 'Poppins-Bold',
         fontSize: 25,
         color: 'black',
-        paddingTop: 15
+        paddingTop: 15,
     },
     strip:{
         fontWeight: 'bold',
@@ -139,43 +140,46 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 5,
         textDecorationLine: 'line-through',
-        textDecorationStyle: 'solid'
+        textDecorationStyle: 'solid',
     },
     centeredView: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: 'rgba(0,0,0,0.5)'
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0,0,0,0.5)',
       },
       modalView: {
         margin: 20,
-        backgroundColor: "white",
+        backgroundColor: 'white',
         borderRadius: 20,
         padding: 35,
-        alignItems: "center",
-        shadowColor: "#000",
+        alignItems: 'center',
+        shadowColor: '#000',
         shadowOffset: {
           width: 0,
-          height: 2
+          height: 2,
         },
         shadowOpacity: 0.25,
         shadowRadius: 4,
-        elevation: 5
+        elevation: 5,
       },
       buttonModal: {
-        borderRadius: 20,
+        borderRadius: 10,
         width: 100,
         marginHorizontal: 15,
         padding: 10,
-        elevation: 2
+        elevation: 2,
       },
       buttonClose: {
-        backgroundColor: "#6A4029",
+        backgroundColor: '#333',
       },
       textStyle: {
-        color: "white",
-        fontWeight: "bold",
-        textAlign: "center"
+        color: 'white',
+        fontWeight: 'bold',
+        textAlign: 'center',
+      },
+      buttonContinue: {
+        backgroundColor: '#6A4029',
       },
       modalText: {
         fontFamily:'Poppins-SemiBold',
@@ -183,7 +187,7 @@ const styles = StyleSheet.create({
         color: 'black',
         fontSize: 20,
         marginBottom: 25,
-        textAlign: "center"
+        textAlign: 'center',
       },
       notif:{
         position: 'absolute',
@@ -194,12 +198,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         borderRadius: 100,
         right: 25,
-        top: 35
+        top: 35,
       },
       textNotif:{
         fontFamily: 'Poppins-Bold',
         fontSize: 8,
-      }
-})
+      },
+});
 
 export default styles;

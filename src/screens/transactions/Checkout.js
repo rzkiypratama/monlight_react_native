@@ -1,4 +1,6 @@
-import React, {useState} from 'react'
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
+import React, {useState} from 'react';
 
 import {
     View,
@@ -7,8 +9,8 @@ import {
     Text,
     TouchableOpacity,
     useWindowDimensions,
-    Pressable
-  } from 'react-native'; 
+    Pressable,
+  } from 'react-native';
 
 import {useNavigation} from '@react-navigation/native';
 import styles from '../../styles/Checkout';
@@ -20,20 +22,20 @@ import transactionActions from '../../redux/actions/transaction';
 // import cartAction from '../redux/actions/transaction'
 
 function Checkout() {
-    const [method, setMethod] = useState("4")
-    
+    const [method, setMethod] = useState('4');
+
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const cartState = useSelector(state => state.transaction.dataCheckout);
-    const profile = useSelector(state => state.profile.profile)
+    const profile = useSelector(state => state.profile.profile);
 
-    console.log(method)
+    console.log(method);
 
     const costing = (price) => {
         return (
           parseFloat(price)
             .toFixed()
-            .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+            .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
         );
       };
 
@@ -46,15 +48,15 @@ function Checkout() {
             size: cartState.size,
             qty: cartState.qty,
             subTotal: cartState.subTotal,
-            delivMethod: method 
-          }
-          dispatch(transactionActions.dataPayment(data))
-          navigation.navigate("Payment")
-    }
+            delivMethod: method,
+          };
+          dispatch(transactionActions.dataPayment(data));
+          navigation.navigate('Payment');
+    };
   return (
     <ScrollView style={styles.container}>
         <View style={styles.navbar}>
-            <IconComunity name={"chevron-left"} size={20} style={styles.icons} onPress={()=>{navigation.goBack()}}/>
+            <IconComunity name={'chevron-left'} size={20} style={styles.icons} onPress={()=>{navigation.goBack();}}/>
             <Text style={styles.titleNavbar}>Checkout</Text>
         </View>
         <View style={{paddingTop: 30}}>
@@ -69,27 +71,27 @@ function Checkout() {
             <View style={styles.CardMethods}>
                 <View>
                     <View style={styles.radio}>
-                        <Pressable style={method === "4" ? styles.checkedOuter : styles.unchekedOuter} onPress={()=>{setMethod("4")}}>
-                            <View style={method === "4" ? styles.checkedInner : undefined}></View>
+                        <Pressable style={method === '4' ? styles.checkedOuter : styles.unchekedOuter} onPress={()=>{setMethod('4');}}>
+                            <View style={method === '4' ? styles.checkedInner : undefined} />
                         </Pressable>
                     </View>
                     <View style={styles.radio}>
-                        <Pressable style={method === "3" ? styles.checkedOuter : styles.unchekedOuter} onPress={()=>{setMethod("3")}}>
-                            <View style={method === "3" ? styles.checkedInner : undefined}></View>
+                        <Pressable style={method === '3' ? styles.checkedOuter : styles.unchekedOuter} onPress={()=>{setMethod('3');}}>
+                            <View style={method === '3' ? styles.checkedInner : undefined} />
                         </Pressable>
                     </View>
                     <View style={styles.radio}>
-                        <Pressable style={method === "1" ? styles.checkedOuter : styles.unchekedOuter} onPress={()=>{setMethod("1")}}>
-                            <View style={method === "1" ? styles.checkedInner : undefined}></View>
+                        <Pressable style={method === '1' ? styles.checkedOuter : styles.unchekedOuter} onPress={()=>{setMethod('1');}}>
+                            <View style={method === '1' ? styles.checkedInner : undefined} />
                         </Pressable>
                     </View>
                 </View>
                 <View>
-                    <Text style={styles.textMethod} onPress={()=>{setMethod("4")}}>Door delivery</Text>
-                    <Divider width={1} style={{width:"100%",marginTop:5,marginBottom: 5.5 }}/>
-                    <Text style={styles.textMethod} onPress={()=>{setMethod("3")}}>Pick up at store</Text>
-                    <Divider width={1} style={{width:"100%",marginTop:5,marginBottom: 5.5 }}/>
-                    <Text style={styles.textMethod} onPress={()=>{setMethod("1")}}>Dine</Text>
+                    <Text style={styles.textMethod} onPress={()=>{setMethod('4');}}>Door delivery</Text>
+                    <Divider width={1} style={{width:'100%',marginTop:5,marginBottom: 5.5 }}/>
+                    <Text style={styles.textMethod} onPress={()=>{setMethod('3');}}>Pick up at store</Text>
+                    <Divider width={1} style={{width:'100%',marginTop:5,marginBottom: 5.5 }}/>
+                    <Text style={styles.textMethod} onPress={()=>{setMethod('1');}}>Dine</Text>
                 </View>
             </View>
             <View style={{flexDirection: 'row', justifyContent: 'space-between', marginVertical: 25}}>
@@ -103,22 +105,22 @@ function Checkout() {
                     <View
                         style={{
                             marginBottom: 20,
-                            backgroundColor: "#6A4029",
-                            height: 70,
-                            borderRadius: 20,
-                            paddingLeft: 30,
+                            backgroundColor: '#6A4029',
+                            height: 50,
+                            borderRadius: 10,
+                            justifyContent: 'center',
                             alignItems: 'center',
                             display: 'flex',
                             flexDirection: 'row',
-                            alignContent: 'center'
+                            alignContent: 'center',
                         }}>
-                        <Text style={{color: "white", fontFamily: 'Poppins-Bold', fontWeight: 'bold', fontSize: 20, paddingLeft: 60}}>Proceed to payment</Text>
+                        <Text style={{color: 'white', fontFamily: 'Poppins-Bold', fontWeight: 'bold', fontSize: 15}}>Proceed to payment</Text>
                     </View>
                 </TouchableOpacity>
             </View>
         </View>
     </ScrollView>
-  )
-} 
+  );
+}
 
 export default Checkout;
