@@ -62,7 +62,7 @@ function Navbar({ children }) {
     const logoutHandler = () => {
         const LogoutSuccess = () => {
             ToastAndroid.showWithGravity(
-                'Logout successfully',
+                'Logout success',
                 ToastAndroid.SHORT,
                 ToastAndroid.TOP
             );
@@ -92,9 +92,9 @@ function Navbar({ children }) {
                 <View style={styles.continerSwipe}>
                     <Image source={{ uri: user.image }} style={styles.imageDrawer} />
                     {role === 'Admin' ? (
-                    <Text style={styles.username}>{user.role}</Text>
+                    <Text style={styles.username}>ADMIN</Text>
                     ) : (
-                    <Text style={styles.username}>{user.display_name}</Text>
+                    <Text style={styles.username}>{user.username}</Text>
                     )}
                     <Text style={styles.email}>{user.email}</Text>
                 </View>
@@ -151,8 +151,8 @@ function Navbar({ children }) {
                     </View>
                     <TouchableOpacity activeOpacity={0.5} style={styles.containerLogout} onPress={() => setModalVisible(true)}>
                         {/* <Image source={IconUser} style={styles.imageBottom}/> */}
-                        <IconFW name={'long-arrow-right'} size={20} style={styles.imageBottom} />
-                        <Text style={styles.textBottom}>Sign-out</Text>
+                        <Text style={styles.textBottom}>Logout</Text>
+                        <IconFW name={'sign-out'} size={20} style={styles.imageBottom} />
                     </TouchableOpacity>
                 </View>
                 <Modal

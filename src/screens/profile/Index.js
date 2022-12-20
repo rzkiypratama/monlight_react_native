@@ -25,7 +25,7 @@ const Profile = () => {
   const auth = useSelector(state => state.auth.userData);
 
   const toOerderHistory = () => {
-    navigation.navigate('Order History');
+    navigation.navigate('History');
   };
 
   useEffect(() => {
@@ -63,7 +63,7 @@ const Profile = () => {
             </View>
           </View>
           <View>
-            <Text style={styles.textName}>{profile.display_name}</Text>
+            <Text style={styles.textName}>{profile.username}</Text>
             <View
               style={{
                 borderBottomWidth: 0.5,

@@ -1,3 +1,10 @@
+/* eslint-disable eslint-comments/no-unused-disable */
+/* eslint-disable no-undef */
+/* eslint-disable eslint-comments/no-unused-disable */
+/* eslint-disable no-shadow */
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
+/* eslint-disable quotes */
 import React, {useState, useEffect} from 'react';
 import styles from '../../styles/EditProfile';
 import IconComunity from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -37,6 +44,7 @@ function EditProfile() {
   const token = useSelector(state => state.auth.userData.token);
 
   const changeHandler = (text, name) => {
+    // eslint-disable-next-line no-shadow
     setBody(body => ({...body, [name]: text}));
   };
 
@@ -48,20 +56,20 @@ function EditProfile() {
       updateDate !== profile.birthday ||
       checked !== profile.gender
     )
-      setAllow(true);
-  }, [body, file, updateDate, checked]);
+      {setAllow(true);}
+  }, [body, file, updateDate, checked, profile.birthday, profile.gender]);
   console.log(updateDate, date);
 
   useEffect(() => {
-    if (profile.gender === 'Male') setChecked('Male');
-    if (profile.gender === 'Female') setChecked('Female');
+    if (profile.gender === 'Male') {setChecked('Male');}
+    if (profile.gender === 'Female') {setChecked('Female');}
     setUpdateDate(profile.birthday);
     setDate(new Date(profile.birthday));
     setFile();
   }, [profile]);
 
   const saveHandler = () => {
-    if (!allow) return;
+    if (!allow) {return;}
     const Success = () => {
       ToastAndroid.showWithGravityAndOffset(
         `Data changed successfully`,
@@ -82,16 +90,16 @@ function EditProfile() {
     };
     let bodies = new FormData();
     if (file)
-      bodies.append('image', {
+      {bodies.append('image', {
         name: 'test.' + file[0]?.type?.substr(6),
         type: file[0]?.type,
         uri: Platform.OS !== 'android' ? 'file://' + file[0]?.uri : file[0]?.uri,
-      });
-    if (body?.username) bodies.append('username', body.username);
-    if (body?.username) bodies.append('username', body.username);
-    if (body?.address) bodies.append('address', body.address);
-    if (updateDate !== profile.birthday) bodies.append('birthday', updateDate);
-    if (checked !== profile.gender) bodies.append('gender', checked);
+      });}
+    if (body?.username) {bodies.append('username', body.username);}
+    // if (body?.username) {bodies.append('username', body.username);}
+    if (body?.address) {bodies.append('address', body.address);}
+    if (updateDate !== profile.birthday) {bodies.append('birthday', updateDate);}
+    if (checked !== profile.gender) {bodies.append('gender', checked);}
     // console.log(bodies);
     dispatch(userAction.editProfileThunk(bodies, token, Success, Error));
   };
@@ -217,7 +225,7 @@ function EditProfile() {
                 checked === 'Female'
                   ? styles.checkedInner
                   : styles.unchekedInner
-              }></View>
+              } />
           </Pressable>
           <Text
             style={
@@ -235,7 +243,7 @@ function EditProfile() {
             <View
               style={
                 checked === 'Male' ? styles.checkedInner : styles.unchekedInner
-              }></View>
+              } />
           </Pressable>
           <Text
             style={

@@ -1,5 +1,6 @@
+/* eslint-disable prettier/prettier */
 import ACTION_STRING from './actionString';
-import { getProduct, getAllProduct, getProductDetail, getPromo } from "../../utils/product";
+import { getProduct, getAllProduct, getProductDetail, getPromo, createProduct } from '../../utils/product';
 
 const getProductPending = () => ({
   type: ACTION_STRING.getProduct.concat(ACTION_STRING.pending),
@@ -57,6 +58,21 @@ const getPromoFulfilled = data => ({
   payload: { data },
 });
 
+const createProductPending = () => ({
+  type: ACTION_STRING.createProduct.concat(ACTION_STRING.pending),
+});
+
+const createProductRejected = error => ({
+  type: ACTION_STRING.createProduct.concat(ACTION_STRING.rejected),
+  payload: {error},
+});
+
+const createProductFulfilled = data => ({
+  type: ACTION_STRING.createProduct.concat(ACTION_STRING.fulfilled),
+  payload: {data},
+});
+
+
 const getProductThunk = (cbSuccess, cbDenied) => {
   return async dispatch => {
     try {
@@ -64,11 +80,11 @@ const getProductThunk = (cbSuccess, cbDenied) => {
       // console.log('redux', body);
       const result = await getProduct();
       dispatch(getProductFulfilled(result.data));
-      typeof cbSuccess === "function" && cbSuccess();
+      typeof cbSuccess === 'function' && cbSuccess();
     } catch (error) {
       dispatch(getProductRejected(error));
       // console.log(error);
-      typeof cbDenied === "function" && cbDenied(error.response.data.msg);
+      typeof cbDenied === 'function' && cbDenied(error.response.data.msg);
     }
   };
 };
@@ -80,27 +96,27 @@ const getAllThunk = (query, cbSuccess, cbDenied) => {
       // console.log('redux', body);
       const result = await getAllProduct(query);
       dispatch(getAllFulfilled(result.data));
-      typeof cbSuccess === "function" && cbSuccess();
+      typeof cbSuccess === 'function' && cbSuccess();
     } catch (error) {
       dispatch(getAllRejected(error));
       // console.log(error);
-      typeof cbDenied === "function" && cbDenied(error.response.data.msg);
+      typeof cbDenied === 'function' && cbDenied(error.response.data.msg);
     }
   };
 };
 
-const getDetailThunk = (params, token, cbSuccess, cbDenied) => {
+const getDetailThunk = (id, cbSuccess, cbDenied) => {
   return async dispatch => {
     try {
       dispatch(getDetailPending());
       // console.log('redux', body);
-      const result = await getProductDetail(params, token);
+      const result = await getProductDetail(id);
       dispatch(getDetailFulfilled(result.data));
-      typeof cbSuccess === "function" && cbSuccess();
+      typeof cbSuccess === 'function' && cbSuccess();
     } catch (error) {
       dispatch(getDetailRejected(error));
       // console.log(error);
-      typeof cbDenied === "function" && cbDenied(error.response.data.msg);
+      typeof cbDenied === 'function' && cbDenied(error.response.data.msg);
     }
   };
 };
@@ -112,17 +128,31 @@ const getPromoThunk = (query, cbSuccess, cbDenied) => {
       // console.log('redux', body);
       const result = await getPromo(query);
       dispatch(getPromoFulfilled(result.data));
-      typeof cbSuccess === "function" && cbSuccess();
+      typeof cbSuccess === 'function' && cbSuccess();
     } catch (error) {
       dispatch(getPromoRejected(error));
       // console.log(error);
-      typeof cbDenied === "function" && cbDenied(error.response.data.msg);
+      typeof cbDenied === 'function' && cbDenied(error.response.data.msg);
     }
   };
 };
 
+const createProductThunk =
+  (body, token, cbSuccess, cbDenied) => async dispacth => {
+    try {
+      dispacth(createProductPending());
+      const result = await createProduct(body, token);
+      dispacth(createProductFulfilled(result.data));
+      typeof cbSuccess() === 'function' && cbSuccess(result.data.data.id);
+    } catch (error) {
+      console.log(error);
+      dispacth(createProductRejected(error));
+      typeof cbDenied === 'function' && cbDenied();
+    }
+  };
+
 const productAction = {
-  getProductThunk, getDetailThunk, getAllThunk, getPromoThunk
+  getProductThunk, getDetailThunk, getAllThunk, getPromoThunk,  createProductThunk,
 };
 
 export default productAction;

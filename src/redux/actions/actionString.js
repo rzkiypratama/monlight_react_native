@@ -16,6 +16,7 @@ const ACTION_STRING = {
   transactionData: 'TRANSACTION_DATA',
   checkout: 'TRANSACTION_CHECKOUT',
   payment: 'TRANSACTION_PAYMENT',
+  createProduct: 'CREATE_PRODUCT',
   getHistory: 'GET_HISTORY',
   authReset: 'AUTH_RESET',
   userReset: 'USER_RESET',

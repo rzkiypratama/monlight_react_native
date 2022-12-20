@@ -63,7 +63,7 @@ const Home = () => {
                         showsHorizontalScrollIndicator={false}
                         horizontal={true}
                         keyboardShouldPersistTaps={'always'}
-                        style={{ height: height / 2 }}
+                        style={{ height: height / 1.5 }}
                     >
                         {products?.map((e) => {
                             return <Card
@@ -83,7 +83,7 @@ const Home = () => {
                         showsHorizontalScrollIndicator={false}
                         horizontal={true}
                         keyboardShouldPersistTaps={'always'}
-                        style={{ height: height / 2 }}
+                        style={{ height: height / 1.8 }}
                     >
                         {promo?.map((e) => {
                             return <CardPromo
@@ -95,6 +95,10 @@ const Home = () => {
                             />;
                         })}
                     </ScrollView>}
+
+
+                    <View>
+
                     {role === 'Admin' && !modalVisible &&
                         <Pressable onPress={() => setModalVisible(true)}>
                         {/* <IconIon name={'add-circle'} style={styles.addCircle} /> */}
@@ -108,6 +112,7 @@ const Home = () => {
                         setModalVisible(!modalVisible);
                     }}
                 > */}
+                {role === 'Admin' &&
                     <View style={styles.centeredView}>
                         {/* <View style={styles.modalView}> */}
                             <View style={{ flexDirection: 'row' }}>
@@ -133,8 +138,10 @@ const Home = () => {
                             </View>
                         {/* </View> */}
                     </View>
+                }
                 {/* </Modal> */}
-                </ScrollView>
+                    </View>
+                    </ScrollView>
             </Navbar>
         </View>
     );

@@ -44,17 +44,18 @@ const getHistoryFulfilled = data => ({
   payload: {data},
 });
 
-const getHistoryThunk = (token, params) => async dispatch => {
-  try {
-    dispatch(getHistoryPending());
-    const result = await apiGetHistory(token, params);
-    dispatch(getHistoryFulfilled(result.data));
-    typeof cbSuccess === 'function' && cbSuccess();
-  } catch (error) {
-    dispatch(getHistoryRejected(error));
-    typeof cbDenied === 'function' && cbDenied();
-  }
-};
+const getHistoryThunk =
+  (token, params, cbSuccess, cbDenied) => async dispatch => {
+    try {
+      dispatch(getHistoryPending());
+      const result = await apiGetHistory(token, params);
+      dispatch(getHistoryFulfilled(result.data));
+      typeof cbSuccess === 'function' && cbSuccess();
+    } catch (error) {
+      dispatch(getHistoryRejected(error));
+      typeof cbDenied === 'function' && cbDenied();
+    }
+  };
 
 const createTransactionThunk =
   (body, token, cbSuccess, cbDenied) => async dispatch => {
@@ -62,7 +63,7 @@ const createTransactionThunk =
       dispatch(createTransactionPending());
       const result = await createTrans(body, token);
       dispatch(createTransactionFulfilled(result.data));
-      typeof cbSuccess === 'function' && cbSuccess();
+      typeof cbSuccess === 'function' && cbSuccess(result.data.data.id);
     } catch (error) {
       dispatch(createTransactionRejected(error));
       typeof cbDenied === 'function' && cbDenied();

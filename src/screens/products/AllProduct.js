@@ -19,11 +19,10 @@ import {
     ActivityIndicator,
 } from 'react-native';
 
-import { useNavigation, useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import productAction from '../../redux/actions/product';
 import debounce from 'lodash.debounce';
-import { Divider } from '@rneui/themed';
 import { FlatList } from 'react-native-gesture-handler';
 
 function Favorite() {

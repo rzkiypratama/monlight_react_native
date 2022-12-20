@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   },
   container:{
     marginTop: 10,
-    paddingLeft: 20,
+    paddingLeft: 10,
   },
   category:{
     // fontFamily: "Poppins-Bold",
@@ -117,6 +117,8 @@ const styles = StyleSheet.create({
   },
   centeredView: {
     marginTop: 50,
+    paddingLeft: 0,
+    // marginRight: 20,
     flex: 1,
     // justifyContent: 'flex-end',
     alignItems: 'center',

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import ACTION_STRING from '../actions/actionString';
 
 const initialState = {
@@ -13,7 +14,7 @@ const initialState = {
 };
 
 const productReducer = (prevState = initialState, { type, payload }) => {
-    const { getProduct, getDetail, getAll, getPromo, pending, rejected, fulfilled } = ACTION_STRING;
+    const { getProduct, getDetail, getAll, getPromo, createProduct, pending, rejected, fulfilled } = ACTION_STRING;
     switch (type) {
         case getProduct + pending:
             return {
@@ -29,7 +30,7 @@ const productReducer = (prevState = initialState, { type, payload }) => {
                 isLoading: false,
                 isFulfilled: false,
                 error: payload.error.response.data.msg,
-                product: []
+                product: [],
             };
         case getProduct + fulfilled:
             return {
@@ -37,7 +38,7 @@ const productReducer = (prevState = initialState, { type, payload }) => {
                 isLoading: false,
                 isError: false,
                 isFulfilled: true,
-                product: payload.data.data
+                product: payload.data.data,
             };
 
         case getAll + pending:
@@ -54,7 +55,7 @@ const productReducer = (prevState = initialState, { type, payload }) => {
                 isLoading: false,
                 isFulfilled: false,
                 error: payload.error.response.data.msg,
-                data: []
+                data: [],
             };
         case getAll + fulfilled:
             const newProduct = payload.data.data;
@@ -83,7 +84,7 @@ const productReducer = (prevState = initialState, { type, payload }) => {
                 isLoading: false,
                 isFulfilled: false,
                 error: payload.error.response.data.msg,
-                detail: []
+                detail: [],
             };
         case getDetail + fulfilled:
             return {
@@ -91,9 +92,8 @@ const productReducer = (prevState = initialState, { type, payload }) => {
                 isLoading: false,
                 isError: false,
                 isFulfilled: true,
-                detail: payload.data.data
+                detail: payload.data.data,
             };
-        
             case getPromo + pending:
                 return {
                     ...prevState,
@@ -109,7 +109,7 @@ const productReducer = (prevState = initialState, { type, payload }) => {
                     isFulfilled: false,
                     error: payload.error.response.data.msg,
                 };
-        case getPromo + fulfilled:
+            case getPromo + fulfilled:
             const newPromo = payload.data.data;
             const pagePromo = payload.data.meta.page;
                 return {
@@ -117,12 +117,32 @@ const productReducer = (prevState = initialState, { type, payload }) => {
                     isLoading: false,
                     isError: false,
                     isFulfilled: true,
-                    promo: pagePromo > 1 ? [...prevState.promo, ...newPromo] : newPromo
+                    promo: pagePromo > 1 ? [...prevState.promo, ...newPromo] : newPromo,
                 };
+                case createProduct + pending:
+                return {
+        ...prevState,
+        isLoading: true,
+        isError: false,
+      };
+
+    case createProduct + rejected:
+      return {
+        ...prevState,
+        isLoading: false,
+        isError: true,
+        error: payload.error.response.data.msg,
+      };
+
+    case createProduct + fulfilled:
+      return {
+        ...prevState,
+        isLoading: false,
+      };
 
         default:
             return prevState;
     }
-}
+};
 
-export default productReducer
+export default productReducer;
