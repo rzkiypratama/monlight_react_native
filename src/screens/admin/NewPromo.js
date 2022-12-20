@@ -127,10 +127,10 @@ function NewPromo() {
             <ButtonOpacity
               color={'#000000'}
               text="Open Camera"
-              radius={13}
+              radius={10}
               colorText="white"
               height={40}
-              width={'60%'}
+              width={'100%'}
               marginBottom={10}
               marginTop={20}
               onPressHandler={{
@@ -140,12 +140,12 @@ function NewPromo() {
             <ButtonOpacity
               color={'#000000'}
               text="Open Gallery"
-              radius={13}
+              radius={10}
               colorText="white"
               height={40}
-              width={'60%'}
+              width={'100%'}
               marginBottom={10}
-              marginTop={20}
+              // marginTop={10}
               // onPress={postRegister}
               onPressHandler={{
                 onPress: libraryLauncher,
@@ -205,10 +205,10 @@ function NewPromo() {
           <View>
             <ButtonOpacity
               color={'#6A4029'}
-              text="Create Product"
-              radius={20}
+              text="Create Promo"
+              radius={10}
               colorText="white"
-              height={70}
+              height={50}
               width={'100%'}
               marginBottom={10}
               marginTop={20}
@@ -220,68 +220,6 @@ function NewPromo() {
           </View>
         </View>
       </ScrollView>
-      {/* <Modal
-        visible={modalVisible}
-        transparent={true}
-        onRequestClose={() => {
-          setModalVisible();
-        }}>
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <View
-              style={{
-                justifyContent: 'flex-end',
-                position: 'absolute',
-                right: 15,
-                top: 15,
-              }}>
-              <IconComunity
-                name="window-close"
-                size={50}
-                style={styles.icons}
-                onPress={() => setModalVisible(!modalVisible)}
-              />
-            </View>
-            <Pressable
-              style={{
-                marginTop: 20,
-                marginBottom: 15,
-                padding: 10,
-                backgroundColor: '#DCDCDC',
-              }}
-              onPress={() => {
-                launchCameras();
-                setModalVisible(!modalVisible);
-              }}>
-              <Text
-                style={{
-                  fontFamily: 'Poppins-Black',
-                  color: '#868686',
-                  fontSize: 17,
-                  textAlign: 'center',
-                }}>
-                OPEN CAMERA
-              </Text>
-            </Pressable>
-            <Pressable
-              style={{padding: 10, backgroundColor: '#DCDCDC'}}
-              onPress={() => {
-                launchImageLibrarys();
-                setModalVisible(!modalVisible);
-              }}>
-              <Text
-                style={{
-                  fontFamily: 'Poppins-Black',
-                  color: '#868686',
-                  fontSize: 17,
-                  textAlign: 'center',
-                }}>
-                OPEN IMAGE LIBRARY
-              </Text>
-            </Pressable>
-          </View>
-        </View>
-      </Modal> */}
     </>
   );
 }

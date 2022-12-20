@@ -17,7 +17,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 import productActions from '../../redux/actions/product';
 
-function NewProduct() {
+function EditProduct() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const [body, setBody] = useState({});
@@ -124,10 +124,10 @@ function NewProduct() {
             <ButtonOpacity
               color={'#000000'}
               text="Open Camera"
-              radius={10}
+              radius={13}
               colorText="white"
               height={40}
-              width={'100%'}
+              width={'60%'}
               marginBottom={10}
               marginTop={20}
               onPressHandler={{
@@ -137,12 +137,12 @@ function NewProduct() {
             <ButtonOpacity
               color={'#000000'}
               text="Open Gallery"
-              radius={10}
+              radius={13}
               colorText="white"
               height={40}
-              width={'100%'}
+              width={'60%'}
               marginBottom={10}
-              // marginTop={20}
+              marginTop={20}
               // onPress={postRegister}
               onPressHandler={{
                 onPress: libraryLauncher,
@@ -187,9 +187,9 @@ function NewProduct() {
             <ButtonOpacity
               color={'#6A4029'}
               text="Create Product"
-              radius={10}
+              radius={20}
               colorText="white"
-              height={50}
+              height={70}
               width={'100%'}
               marginBottom={10}
               marginTop={20}
@@ -267,4 +267,4 @@ function NewProduct() {
   );
 }
 
-export default NewProduct;
+export default EditProduct;

@@ -150,9 +150,9 @@ function Favorite() {
                   justifyContent: 'center',
                   alignItems: 'center',
                   flex: 1,
-                  paddingTop: 200,
+                //   paddingTop: 100,
                 }}>
-                    <ActivityIndicator size={'large'} color={'#6A4029'} />
+                    <ActivityIndicator size={'large'} color={'#000'} />
               </View>
             ) : product && product.length === 0 ? (
               <View
@@ -192,7 +192,9 @@ function Favorite() {
                   );
                 }}
                 onEndReached={nextItems}
-                contentContainerStyle={styles.containerCard}
+                style={{paddingTop: 10, paddingLeft: 17}}
+                // contentContainerStyle={styles.containerCard}
+                onEndReachedThreshold={0.5}
                 numColumns={2}
                 ListFooterComponent={renderFooter}
                 horizontal={false}

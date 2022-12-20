@@ -83,6 +83,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginHorizontal: 10,
         marginVertical: 30,
+        marginTop: 30,
     },
     imgProduct: {
         width: 128.98,

@@ -55,6 +55,10 @@ function Navbar({ children }) {
         navigation.navigate('Profile');
     };
 
+    const toAddProduct = () => {
+        navigation.navigate('NewProduct');
+    };
+
     const toHistory = () => {
         navigation.navigate('History');
     };
@@ -105,7 +109,7 @@ function Navbar({ children }) {
                             onPress={() => props.navigation.closeDrawer()}/>
                         </DrawerItem> */}
                         {role === 'Admin' ? (
-                        <Pressable style={styles.containerBottom} onPress={toProfile}>
+                        <Pressable style={styles.containerBottom} onPress={toAddProduct}>
                             {/* <Image source={IconUser} style={styles.imageBottom}/> */}
                             <Icons name={'user-circle'} size={20} style={styles.imageBottom} />
                             <Text style={styles.textBottom}>Add New Product</Text>
