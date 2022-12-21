@@ -57,7 +57,7 @@ console.log(Payment);
                 );}
                 PushNotification.localNotification({
                     channelId: 'local-notification',
-                    title: 'Transaction Notification',
+                    title: 'Monlight Cafe',
                     message: 'Transaction created!',
                     autoCancel: true,
                   });

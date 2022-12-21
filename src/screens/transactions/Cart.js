@@ -52,7 +52,7 @@ function Cart() {
     let cost = 0;
     if (cartState.size === '2') {cost = 6000;}
     if (cartState.size === '3') {cost = 12000;}
-    const total = price + 10000 + cost;
+    const total = price + 0 + cost;
     return costing(total);
   };
 
@@ -69,7 +69,7 @@ function Cart() {
     if (dataCart.size === '2') {cost = 6000;}
     if (dataCart.size === '3') {cost = 12000;}
     let price = cartState.price * quantity;
-    const total = price + 10000 + cost;
+    const total = price + 0 + cost;
     const data = {
       id: dataCart.id,
       image: dataCart.image,
@@ -124,7 +124,7 @@ function Cart() {
               </View>
               <View style={styles.containerTotal}>
                 <Text style={styles.textTotal}>Tax</Text>
-                <Text style={styles.textPrice}>IDR 10.000</Text>
+                <Text style={styles.textPrice}>IDR 0</Text>
               </View>
             </View>
             <View style={{flexDirection: 'row', paddingTop: 20, justifyContent: 'space-between'}}>
