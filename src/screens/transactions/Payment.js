@@ -58,7 +58,7 @@ console.log(Payment);
                 PushNotification.localNotification({
                     channelId: 'local-notification',
                     title: 'Transaction Notification',
-                    message: 'Transaction created succesfully, Please complete your payment immediately!',
+                    message: 'Transaction created!',
                     autoCancel: true,
                   });
             // setLoading(true)
