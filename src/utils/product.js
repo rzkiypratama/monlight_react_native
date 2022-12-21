@@ -12,7 +12,7 @@ const config = (token) => {
   };
 
 export const getProduct = () => {
-  const URL = `${BaseUrl}api/products?limit=5`;
+  const URL = `${BaseUrl}api/products?page=2&limit=8`;
   // console.log('util', URL);
   return axios.get(URL);
 };

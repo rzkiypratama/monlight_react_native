@@ -1,3 +1,5 @@
+/* eslint-disable quotes */
+/* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
 import {
     View,
@@ -9,11 +11,11 @@ import {
     ScrollView,
     ToastAndroid,
     ActivityIndicator,
-    TextInput
+    TextInput,
 } from 'react-native';
 // import {useDispatch, useSelector} from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
-import IconIon from 'react-native-vector-icons/Ionicons'
+import IconIon from 'react-native-vector-icons/Ionicons';
 
 
 
@@ -24,9 +26,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import authAction from '../../redux/actions/auth';
 
 const Reset = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const navigation = useNavigation();
-    const loading = useSelector(state => state.auth.isLoading)
+    const loading = useSelector(state => state.auth.isLoading);
     const [isPwdShown, setIsPwdShown] = useState(true);
     const [isPwdShown2, setIsPwdShown2] = useState(true);
     const [form, setForm] = useState({
@@ -46,44 +48,45 @@ const Reset = () => {
     };
 
     const onChangeHandler = (text, type) => {
-        setForm(form => ({ ...form, [type]: text }))
-    }
+        setForm(form => ({ ...form, [type]: text }));
+    };
 
     const handleSubmit = e => {
-        e.preventDefault()
+        e.preventDefault();
 
         const forgotSuccess = () => {
             ToastAndroid.showWithGravity(
                 `Congrats! Your Password updated successfully!`,
                 ToastAndroid.SHORT,
                 ToastAndroid.TOP,
-            )
-            navigation.navigate('Login')
-        }
+            );
+            navigation.navigate('Login');
+        };
 
         const forgotError = (error) => {
             ToastAndroid.showWithGravity(
                 `${error}`,
                 ToastAndroid.SHORT,
                 ToastAndroid.TOP,
-            )
-        }
+            );
+        };
 
-        dispatch(authAction.resetThunk(form, forgotSuccess, forgotError))
-    }
+        dispatch(authAction.resetThunk(form, forgotSuccess, forgotError));
+    };
 
 
     return (
+        <ScrollView>
         <View style={styles.container}>
             <ImageBackground source={bg} resizeMode="cover" style={styles.bg} />
             <View style={styles.content}>
                 <Text style={styles.title}>ONE STEP AGAIN!</Text>
                 <Text style={styles.titleDesc}>
-                    Enter your OTP to reset your password 
+                    Enter your OTP to reset your password
                 </Text>
                 <ScrollView style={styles.form}>
                     <KeyboardAvoidingView>
-                        <Input value={form.otp} placeholder='Enter your OTP' isPassword={false} type='phone-pad' handler={onChangeHandler} text={'otp'} />
+                        <Input value={form.otp} placeholder="Enter your OTP" isPassword={false} type="phone-pad" handler={onChangeHandler} text={'otp'} />
                         {/* <Input value={form.newPassword} placeholder='Enter your new password' isPassword={true} type='none' handler={onChangeHandler} text={'newPassword'} /> */}
                         {/* <Input value={form.confirmPassword} placeholder='Confirm your new password' isPassword={true} type='none' handler={onChangeHandler} text={'confirmPassword'} /> */}
                         <View style={styles.wrapperPwd}>
@@ -121,13 +124,14 @@ const Reset = () => {
                         </Text>
                         <TouchableOpacity style={styles.resendLink} onPress={handleSubmit}>
                             {loading ? <View style={styles.googleBtn}>
-                                <ActivityIndicator size='large' color='black' />
+                                <ActivityIndicator size="large" color="black" />
                             </View> : <Text style={styles.textResendLink}>Reset Password</Text>}
                         </TouchableOpacity>
                     </KeyboardAvoidingView>
                 </ScrollView>
             </View>
         </View>
+        </ScrollView>
     );
 };
 

@@ -1,3 +1,5 @@
+/* eslint-disable jsx-quotes */
+/* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from 'react';
 import {
     View,
@@ -15,47 +17,48 @@ import { useNavigation } from '@react-navigation/native';
 
 import styles from '../../styles/Forgot';
 import bg from '../../assets/images/bgWelcome.png';
-import Input from "../../components/Input";
+import Input from '../../components/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import authAction from '../../redux/actions/auth';
 
 const Forgot = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const navigation = useNavigation();
-    const loading = useSelector(state => state.auth.isLoading)
+    const loading = useSelector(state => state.auth.isLoading);
     const [email, setEmail] = useState('');
 
     console.log(email);
 
     const onChangeHandler = (text, type) => {
-        setEmail(email => ({ ...email, [type]: text }))
-    }
+        setEmail(email => ({ ...email, [type]: text }));
+    };
 
     const handleSubmit = e => {
-        e.preventDefault()
+        e.preventDefault();
 
         const forgotSuccess = () => {
             ToastAndroid.showWithGravity(
                 `Congrats ${email.email}! Please check your email!`,
                 ToastAndroid.SHORT,
                 ToastAndroid.TOP,
-            )
-            navigation.navigate('Reset')
-        }
+            );
+            navigation.navigate('Reset');
+        };
 
         const forgotError = (error) => {
             ToastAndroid.showWithGravity(
                 `${error}`,
                 ToastAndroid.SHORT,
                 ToastAndroid.TOP,
-            )
-        }
+            );
+        };
 
-        dispatch(authAction.forgotThunk(email, forgotSuccess, forgotError))
-    }
+        dispatch(authAction.forgotThunk(email, forgotSuccess, forgotError));
+    };
 
 
     return (
+        <ScrollView>
         <View style={styles.container}>
             <ImageBackground source={bg} resizeMode="cover" style={styles.bg} />
             <View style={styles.content}>
@@ -78,6 +81,7 @@ const Forgot = () => {
                 </ScrollView>
             </View>
         </View>
+        </ScrollView>
     );
 };
 

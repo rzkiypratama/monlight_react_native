@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     marginHorizontal: 40,
-    paddingTop: 107,
+    paddingTop: 47,
     marginBottom: 20,
   },
   titleDesc: {
@@ -34,10 +34,10 @@ const styles = StyleSheet.create({
     color: '#fff',
     textAlign: 'center',
     marginHorizontal: 110,
-    marginBottom: 100,
+    marginBottom: 50,
   },
   form: {
-    paddingTop: 130,
+    paddingTop: 30,
   },
   textConfirmation: {
     fontSize: 14,
@@ -67,15 +67,15 @@ const styles = StyleSheet.create({
     borderBottomColor: '#fff',
     marginHorizontal: 31,
     paddingBottom: 3,
-    },
-  
-    btnLoading: {
-        backgroundColor: 'transparent',
-        alignItems: 'center',
-        borderRadius: 10,
-        justifyContent: 'center',
   },
-    
+
+  btnLoading: {
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    borderRadius: 10,
+    justifyContent: 'center',
+  },
+
   wrapperPwd: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -85,8 +85,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   iconPwd: {
-      color: '#fff',
-      fontSize: 20,
+    color: '#fff',
+    fontSize: 20,
   },
   inputPwd: {
     fontFamily: 'Poppins-Bold',
