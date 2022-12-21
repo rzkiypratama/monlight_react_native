@@ -96,7 +96,7 @@ console.log(Payment);
             <View style={styles.Containercard}>
                 <View style={styles.card}>
                     <View>
-                        <Image source={{uri: cartState.image}} style={styles.imageCard}/>
+                        <Image source={cartState.image ? {uri: cartState.image} : null} style={styles.imageCard}/>
                     </View>
                     <View style={{marginHorizontal: 15, minWidth:100, maxWidth: 80}}>
                         <Text style={styles.Title}>{cartState.productName}</Text>

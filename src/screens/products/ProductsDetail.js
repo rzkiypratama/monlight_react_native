@@ -115,7 +115,7 @@ function ProductDetail(props) {
                     <Text style={styles.priceText}>{costing(detail.price)}</Text>
                 </View>
                 <View style={styles.top}>
-                    <Image source={{ uri: detail.image }} style={styles.product} />
+                    <Image source={ detail.image ? { uri: detail.image } : null} style={styles.product} />
                     <Text style={styles.Title}>{detail.product_name}</Text>
                 </View>
                     </>

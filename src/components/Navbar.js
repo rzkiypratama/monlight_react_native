@@ -94,7 +94,7 @@ function Navbar({ children }) {
             <ScrollView>
             <View>
                 <View style={styles.continerSwipe}>
-                    <Image source={{ uri: user.image }} style={styles.imageDrawer} />
+                    <Image source={user.image ? {uri: user.image } : null} style={styles.imageDrawer} />
                     {role === 'Admin' ? (
                     <Text style={styles.username}>ADMIN</Text>
                     ) : (

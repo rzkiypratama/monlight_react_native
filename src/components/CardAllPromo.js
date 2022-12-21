@@ -28,7 +28,7 @@ const CardAllPromo = ({ image, productName, status, subtotal }) => {
             padding: 15,
           }}>
           <View>
-            <Image source={{uri: image}} style={styles.imageCard} />
+            <Image source={image ? {uri: image} : null} style={styles.imageCard} />
           </View>
           <View style={{paddingLeft: 15, justifyContent:'center'}}>
             <Text style={styles.cardTitle}>{productName}</Text>

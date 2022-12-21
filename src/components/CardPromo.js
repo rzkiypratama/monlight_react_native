@@ -22,7 +22,7 @@ const CardPromo = ({img, name, code}) => {
         </Pressable>
       )}
       <View style={styles.containerImage}>
-        <Image source={{uri: img}} style={styles.imageCard} />
+        <Image source={img ? {uri: img} : null} style={styles.imageCard} />
       </View>
       <View style={styles.containerTitle}>
         <Text style={styles.cardTitle}>{name}</Text>

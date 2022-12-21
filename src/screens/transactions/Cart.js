@@ -95,7 +95,7 @@ function Cart() {
             <View style={{minHeight: 250}}>
               <View style={styles.card}>
                 <View style={{marginRight: 20,backgroundColor: 'white', width: width / 3, padding: 10, borderRadius: 30}}>
-                  <Image source={{uri: cartState.image}} style={styles.cardImage}/>
+                  <Image source={ cartState.image ? {uri: cartState.image} : null} style={styles.cardImage}/>
                   <Text style={styles.cardPrice}>IDR {costing(cartState.price)}</Text>
                 </View>
                 <View>

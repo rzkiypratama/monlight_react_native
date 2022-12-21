@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
 import {
     View,
     Text,
@@ -8,17 +10,17 @@ import {
   import React from 'react';
 //   import {currencyFormatter} from '../../../modules/helper/currencyFormatter';
   import styles from '../styles/CardHistory';
-  
-  
+
+
 const History = ({ image, productName, status, subtotal }) => {
     const { width } = useWindowDimensions();
-    
+
     const costing = (price) => {
         return (
-            "IDR " +
+            'IDR ' +
             parseFloat(price)
                 .toFixed()
-                .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.")
+                .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')
         );
     };
 
@@ -35,7 +37,7 @@ const History = ({ image, productName, status, subtotal }) => {
             padding: 15,
           }}>
           <View>
-            <Image source={{uri: image}} style={styles.imageCard} />
+            <Image source={image ? {uri: image} : null } style={styles.imageCard} />
           </View>
           <View style={{paddingLeft: 10, justifyContent:'center'}}>
             <Text style={styles.cardTitle}>{productName}</Text>
@@ -48,5 +50,5 @@ const History = ({ image, productName, status, subtotal }) => {
       </TouchableOpacity>
     );
   };
-  
+
   export default History;
