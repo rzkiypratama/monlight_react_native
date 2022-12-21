@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useState} from 'react';
 
 import styles from '../../styles/History';
@@ -101,17 +102,14 @@ function History() {
             justifyContent: 'center',
             alignItems: 'center',
             flex: 1,
-            paddingTop: 200,
+            // paddingTop: 200,
           }}>
-          <ActivityIndicator size={'large'} color={'#6A4029'} />
+          <ActivityIndicator size={'large'} color={'#000'} />
         </View>
       ) : (
-        history &&
+        history.map &&
         history.length > 0 && (
           <FlatList
-            numColumns={6}
-            scrollEventThrottle={1900}
-            columnWrapperStyle={styles.tagView}
             data={history}
             renderItem={({item}) => {
               return (
